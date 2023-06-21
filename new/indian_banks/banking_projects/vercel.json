@@ -1,13 +1,12 @@
 {
-    "version" : 2,
     "builds": [
         {
-            "src": "poll/wsgi.py",
+            "src": "banking_projects/wsgi.py",
             "use": "@vercel/python",
             "config": {"maxLambdaSize": "15mb", "runtime": "python3.10"}
         },
         {
-            "src": "build_files.sh",
+            "src": "banking_projects/build_files.sh",
             "use": "@vercel/static-build",
             "config": {
                 "disDir": "staticfiles_build"
@@ -16,12 +15,8 @@
     ],
     "routes":[
         {
-            "src": "/static/(.*)",
-            "dest": "/static/$1"
-        },
-        {
             "src": "/(.*)",
-            "dest": "poll/wsgi.py"
+            "dest": "banking_projects/wsgi.py"
         }
     ]
 }
